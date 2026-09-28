@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Group Greeter — Завантаження</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: #8892b0;
+            font-size: 1.1em;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .card h2 {
+            color: #00d2ff;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .card h3 {
+            color: #3a7bd5;
+            margin: 15px 0 10px;
+            font-size: 1.1em;
+        }
+        .card p, .card li {
+            color: #a8b2d1;
+        }
+        .card ul, .card ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .card li {
+            margin: 8px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px 10px 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,210,255,0.4);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .download-section {
+            text-align: center;
+            padding: 30px;
+        }
+        .file-list {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .file-list code {
+            color: #00d2ff;
+        }
+        .warning {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning strong {
+            color: #ffc107;
+        }
+        .success {
+            background: rgba(40,167,69,0.1);
+            border: 1px solid rgba(40,167,69,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .success strong {
+            color: #28a745;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #5a6a8a;
+            font-size: 0.9em;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+            .card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Telegram Group Greeter</h1>
+            <p>Автоматичне привітання нових учасників у групі</p>
+        </header>
+
+        <div class="card download-section">
+            <h2>Завантаження</h2>
+            <p>Оберіть потрібні файли для завантаження:</p>
+            <br>
+            <a href="https://f-droid.org/packages/com.termux/" class="btn btn-primary">Termux (F-Droid)</a>
+            <a href="https://f-droid.org/packages/com.termux.widget/" class="btn btn-secondary">Termux:Widget</a>
+            <a href="files/greet_bot.py" download class="btn btn-secondary">greet_bot.py</a>
+            <a href="files/profiles.json" download class="btn btn-secondary">profiles.json</a>
+            <a href="files/requirements.txt" download class="btn btn-secondary">requirements.txt</a>
+        </div>
+
+        <div class="card">
+            <h2>Швидкий старт</h2>
+
+            <h3>1. Встановіть Termux</h3>
+            <p>Завантажте Termux з <a href="https://f-droid.org/packages/com.termux/" style="color:#00d2ff">F-Droid</a> (не з Google Play).</p>
+
+            <h3>2. Встановіть залежності</h3>
+            <p>Відкрийте Termux і виконайте:</p>
+            <div class="file-list">
+                <code>pkg update && pkg upgrade -y</code><br>
+                <code>pkg install python -y</code>
+            </div>
+
+            <h3>3. Скопіюйте файли</h3>
+            <p>Покладіть файли у папку <code>~/Downloads/</code> на телефоні.</p>
+
+            <h3>4. Встановіть Python-залежності</h3>
+            <div class="file-list">
+                <code>cd ~/Downloads</code><br>
+                <code>pip install -r requirements.txt</code>
+            </div>
+
+            <h3>5. Запустіть</h3>
+            <div class="file-list">
+                <code>python greet_bot.py</code>
+            </div>
+
+            <div class="success">
+                <strong>Готово!</strong> При першому запуску відскануйте QR-код для авторизації.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Налаштування віджета</h2>
+            <p>Для запуску одним тапом на робочому столі:</p>
+            <br>
+            <div class="file-list">
+                <code>mkdir -p ~/.termux/widgets</code><br>
+                <code>cat > ~/.termux/widgets/greeter.sh << 'EOF'</code><br>
+                <code>#!/data/data/com.termux/files/usr/bin/sh</code><br>
+                <code>cd ~/Downloads</code><br>
+                <code>python greet_bot.py</code><br>
+                <code>EOF</code><br>
+                <code>chmod +x ~/.termux/widgets/greeter.sh</code>
+            </div>
+            <p>Після цього додайте віджет Termux:Widget на робочий стол.</p>
+        </div>
+
+        <div class="card">
+            <h2>Налаштування батареї</h2>
+            <p>Щоб скрипт не зупинявся системою:</p>
+            <ul>
+                <li><strong>Налаштування > Батарея > Оптимізазація</strong> → Не оптимізувати Termux</li>
+                <li><strong>Налаштування > Додатки > Termux > Автозапуск</strong> → Увімкнути</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Додавання акаунтів</h2>
+            <p>При запуску скрипт показує меню вибору профілю. Ви можете:</p>
+            <ul>
+                <li>Вибрати існуючий акаунт</li>
+                <li>Додати новий акаунт (потрібні API_ID, API_HASH, номер телефону, ID групи)</li>
+            </ul>
+            <p>Профілі зберігаються у файлі <code>profiles.json</code>.</p>
+        </div>
+
+        <div class="card">
+            <h2>Отримання API_ID та API_HASH</h2>
+            <ol>
+                <li>Перейдіть на <a href="https://my.telegram.org" style="color:#00d2ff">my.telegram.org</a></li>
+                <li>Увійдіть за номером телефону</li>
+                <li>Виберіть <strong>API development tools</strong></li>
+                <li>Створіть новий додаток і отримайте <code>API_ID</code> та <code>API_HASH</code></li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>Отримання ID групи</h2>
+            <ol>
+                <li>Додайте <a href="https://t.me/getmyid_bot" style="color:#00d2ff">@getmyid_bot</a> у групу</li>
+                <li>Напишіть будь-яке повідомлення в групу</li>
+                <li>Перешліть це повідомлення боту — він поверне ID групи</li>
+            </ol>
+            <p>ID групи має бути від'ємним числом, наприклад: <code>-1001234567890</code></p>
+        </div>
+
+        <div class="warning">
+            <strong>Важливо:</strong> Ніколи не повідомляйте свій API_HASH, номер телефону або пароль 2FA іншим людям!
+        </div>
+
+        <div class="card">
+            <h2>Вирішення проблем</h2>
+
+            <h3>Скрипт не запускається</h3>
+            <p>Переконайтеся, що встановлені всі залежності: <code>pip install -r requirements.txt</code></p>
+
+            <h3>QR-код не з'являється</h3>
+            <p>Перезапустіть скрипт. Переконайтеся, що ви використовуєте правильний номер телефону.</p>
+
+            <h3>Скрипт зупиняється через деякий час</h3>
+            <p>Перевірте налаштування батареї (див. вище).</p>
+
+            <h3>Помилка FloodWait</h3>
+            <p>Зачекайте вказаний час і спробуйте знову.</p>
+        </div>
+
+        <footer>
+            <p>Telegram Group Greeter — відкритий проєкт</p>
+            <p>Використовуйте на свій розсуд</p>
+        </footer>
+    </div>
+</body>
+</html>
