@@ -1,8 +1,8 @@
 {
   "default": {
-    "api_id": "32999767",
-    "api_hash": "263c6769abfa42765ff8e375404e3ffa",
-    "phone": "+380664597824",
-    "group_id": "-1003948070897"
+    "api_id": "12345678",
+    "api_hash": "your_api_hash_here",
+    "phone": "+380991234567",
+    "group_id": "-1001234567890"
   }
 }
